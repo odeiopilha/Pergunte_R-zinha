@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pergunte ao Seu Amigo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f8e9;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #33691e;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1em;
+      width: 80%;
+      max-width: 400px;
+      border: 2px solid #c5e1a5;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 280px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+
+    #resposta {
+      margin-top: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      color: #33691e;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      background-color: #689f38;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #558b2f;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pergunte a Rêzinha!</h1>
+  <p>Escreva ai uma pergunta pra Rê</p>
+
+  <input type="text" id="pergunta" placeholder="Digite sua pergunta aqui..." />
+
+  <br>
+  <button onclick="responderPergunta()">Perguntar</button>
+
+  <div>
+    <img id="imagem" src="neutro.jpg" alt="Seu amigo responde">
+  </div>
+
+  <div id="resposta">🤔</div>
+
+  <script>
+    function responderPergunta() {
+      const pergunta = document.getElementById("pergunta").value.trim();
+      const respostaEl = document.getElementById("resposta");
+      const imagemEl = document.getElementById("imagem");
+
+      if (pergunta === "") {
+        respostaEl.innerText = "Faça uma pergunta!";
+        imagemEl.src = "neutro.jpg";
+        return;
+      }
+
+      const respostas = ["Sim", "Não"];
+      const escolhido = respostas[Math.floor(Math.random() * respostas.length)];
+
+      respostaEl.innerText = escolhido;
+
+      if (escolhido === "Sim") {
+        imagemEl.src = "sim.jpg";
+      } else {
+        imagemEl.src = "nao.jpg";
+      }
+    }
+  </script>
+
+</body>
+</html>
